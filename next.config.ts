@@ -1,0 +1,18 @@
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  cacheComponents: true,
+  partialPrefetching: true,
+  // Database drivers are loaded from node_modules at run time, not bundled.
+  serverExternalPackages: ["@electric-sql/pglite", "postgres"],
+  turbopack: {
+    rules: {
+      "*.css": {
+        loaders: ["@tailwindcss/turbopack"],
+        as: "*.css",
+      },
+    },
+  },
+};
+
+export default nextConfig;
